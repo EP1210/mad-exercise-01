@@ -9,7 +9,7 @@
 ## Questions
 ### Describe how Kotlin handles null safety. What are nullable types and non-null types in Kotlin? (0,5 points)
 
-<span style="color:blue">Provide your answer here! </span>
+<span style="color:blue">Provide your answer here!</span>
 > Note: you can also use code snippets to illustrate your answer. 
 
 ```kotlin 
