@@ -9,12 +9,16 @@
 ## Questions
 ### Describe how Kotlin handles null safety. What are nullable types and non-null types in Kotlin? (0,5 points)
 
-<span style="color:blue">Provide your answer here!</span>
+<span style="color:blue">In general Kotlin is null-safe so null values cannot be used. Non-null types are the default in Kotlin. If a variable should be nullable it has to be explicitly declared with a '?' after the data type.
+In case of a nullable variable null safety can be achieved again with the '?'. Also a non-null asserted call can be used with '!!'.</span>
 > Note: you can also use code snippets to illustrate your answer. 
 
 ```kotlin 
 // example code snippet
 val a: String = "value" // non-null type
+val word: String? = null // nullable type because of ?
+word?.uppercase() // uppercase function will only be called if word is not null
+word!!.uppercase() // uppercase function is going to be executed even if word is null --> !! should only be used if the variable is not null for sure
 ```
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
