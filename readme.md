@@ -23,7 +23,7 @@ word!!.uppercase() // uppercase function is going to be executed even if word is
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
-<span style="color:blue">Provide your answer here!</span>
+<span style="color:blue">A lambda function is basically an object itself so it can be stored in a variable. Higher order functions take a lambda expression as an argument. It is helpful to store a function in a variable because of reusability or making callbacks.</span>
 
 ### Provide a solution for the following number guessing game inside `App.kt`. (3 points)
 
