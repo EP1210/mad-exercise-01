@@ -3,6 +3,8 @@
  */
 package at.ac.fhcampuswien
 
+import java.lang.IllegalArgumentException
+
 class App {
     // Game logic for a number guessing game
     fun playNumberGame(digitsToGuess: Int = 4) {
@@ -25,8 +27,17 @@ class App {
      *         to generate a non-repeating number with more than 10 unique digits or with no digits.
      */
     val generateRandomNonRepeatingNumber: (Int) -> Int = { length ->
-        //TODO implement the function
-        0   // return value is a placeholder
+        var randomNumber = ""
+
+        while (randomNumber.length < length) {
+            val randomDigit = (0..9).random().toString()
+
+            if (randomDigit !in randomNumber) {
+                randomNumber += randomDigit
+            }
+        }
+
+        randomNumber.toInt()
     }
 
     /**
@@ -46,8 +57,27 @@ class App {
      * @throws IllegalArgumentException if the inputs do not have the same number of digits.
      */
     val checkUserInputAgainstGeneratedNumber: (Int, Int) -> CompareResult = { input, generatedNumber ->
-        //TODO implement the function
-        CompareResult(0, 0)   // return value is a placeholder
+        val guessedNumber = input.toString()
+        val randomNumber = generatedNumber.toString()
+        var correctDigits = 0
+        val correctDigitsFound = mutableListOf<Char>()
+        var correctDigitsAtPosition = 0
+
+        if (guessedNumber.length != randomNumber.length) {
+            throw IllegalArgumentException()
+        }
+
+        for (index in 0 until guessedNumber.length) {
+            if (guessedNumber[index] in randomNumber && guessedNumber[index] !in correctDigitsFound) {
+                correctDigits++
+                correctDigitsFound.add(guessedNumber[index])
+            }
+            if (guessedNumber[index] == randomNumber[index]) {
+                correctDigitsAtPosition++
+            }
+        }
+
+        CompareResult(correctDigits, correctDigitsAtPosition)
     }
 }
 
