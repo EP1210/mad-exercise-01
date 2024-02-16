@@ -9,6 +9,15 @@ class App {
     // Game logic for a number guessing game
     fun playNumberGame(digitsToGuess: Int = 4) {
         //TODO: build a menu which calls the functions and works with the return values
+        val randomNumber = generateRandomNonRepeatingNumber(digitsToGuess)
+        var userGuess: Int?
+        var correctGuess = false
+
+        while (!correctGuess) {
+            userGuess = readLine()?.toInt() ?: 0
+            print("User input: $userGuess,")
+            correctGuess = true
+        }
     }
 
     /**
@@ -28,6 +37,10 @@ class App {
      */
     val generateRandomNonRepeatingNumber: (Int) -> Int = { length ->
         var randomNumber = ""
+
+        if (length > 10 || length < 1) {
+            throw IllegalArgumentException()
+        }
 
         while (randomNumber.length < length) {
             val randomDigit = (0..9).random().toString()
@@ -82,6 +95,6 @@ class App {
 }
 
 fun main() {
-    println("Hello World!")
     // TODO: call the App.playNumberGame function with and without default arguments
+    App().playNumberGame(digitsToGuess = 3)
 }
