@@ -8,15 +8,25 @@ import java.lang.IllegalArgumentException
 class App {
     // Game logic for a number guessing game
     fun playNumberGame(digitsToGuess: Int = 4) {
-        //TODO: build a menu which calls the functions and works with the return values
         val randomNumber = generateRandomNonRepeatingNumber(digitsToGuess)
-        var userGuess: Int?
         var correctGuess = false
+        var userGuess: String?
+        var output: CompareResult
 
+        println("The number to guess has $digitsToGuess digits.")
         while (!correctGuess) {
-            userGuess = readLine()?.toInt() ?: 0
-            print("User input: $userGuess,")
-            correctGuess = true
+
+            do {
+                print("User input: ")
+                userGuess = readLine()
+            } while (userGuess == null || userGuess.length != digitsToGuess)
+
+            output = checkUserInputAgainstGeneratedNumber(userGuess.toInt(), randomNumber)
+            println("$output")
+
+            if (output.n == digitsToGuess) {
+                correctGuess = true
+            }
         }
     }
 
@@ -95,6 +105,6 @@ class App {
 }
 
 fun main() {
-    // TODO: call the App.playNumberGame function with and without default arguments
+    App().playNumberGame()
     App().playNumberGame(digitsToGuess = 3)
 }
