@@ -22,7 +22,7 @@ class App {
             } while (userGuess == null || userGuess.length != digitsToGuess)
 
             output = checkUserInputAgainstGeneratedNumber(userGuess.toInt(), randomNumber)
-            println("$output")
+            println(output)
 
             if (output.n == digitsToGuess) {
                 correctGuess = true
