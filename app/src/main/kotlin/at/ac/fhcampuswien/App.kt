@@ -48,12 +48,12 @@ class App {
     val generateRandomNonRepeatingNumber: (Int) -> Int = { length ->
         var randomNumber = ""
 
-        if (length > 10 || length < 1) {
+        if (length > 9 || length < 1) {
             throw IllegalArgumentException()
         }
 
         while (randomNumber.length < length) {
-            val randomDigit = (0..9).random().toString()
+            val randomDigit = (1..9).random().toString()
 
             if (randomDigit !in randomNumber) {
                 randomNumber += randomDigit
